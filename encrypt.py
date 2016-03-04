@@ -20,6 +20,19 @@ Do you want to encrypt or decrypt?
 	
 	return option
 
+def MethodMenu():
+	print """
+Which method do you want to use?
+(c)aesarian fixed offset
+(p)seudo-random offset
+(s)ubstitution cipher
+"""
+	option = raw_input("choose: ")
+	while option != 'c' and option != 'p' and option != 's':
+		option = raw_input("choose: ")
+	
+	return option
+
 def main():
 	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?! \t\n\r"
 	PrintDescription()
@@ -28,7 +41,9 @@ def main():
 		choice = StartMenu()
 		if choice == 'q':
 			break
-	
+		method_choice = MethodMenu()
+		print "you chose: ", method_choice
+		
 	print "Good Bye"	
 
 main()
