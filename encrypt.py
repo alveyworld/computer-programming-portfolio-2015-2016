@@ -55,6 +55,7 @@ def main():
 		except:
 			print "That file doesn't exist"
 			continue
+		fout = open(destination_file, "wb")
 		
 		
 	print "Good Bye"	
