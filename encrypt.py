@@ -21,6 +21,7 @@ def main():
 	
 	while True:
 		StartMenu()
+		
 
 main()
 
