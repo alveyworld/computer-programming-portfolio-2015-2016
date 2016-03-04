@@ -42,9 +42,9 @@ def main():
 		print "option is ", option
 		if option == 'q':
 			break
-		else:
-			method_option = MethodMenu()
-			print "You chose: ", method_option
+		method_option = MethodMenu()
+		file_name = raw_input("What file? ")
+			
 	
 	print "Good Bye"
 
