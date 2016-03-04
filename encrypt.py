@@ -42,7 +42,20 @@ def main():
 		if choice == 'q':
 			break
 		method_choice = MethodMenu()
-		print "you chose: ", method_choice
+		
+		print "Enter an input file name: "
+		source_file = raw_input()
+		print "Enter an output file name: "
+		destination_file = raw_input()
+		print "Enter your password: "
+		password = raw_input()
+		
+		try:
+			fin = open(source_file, "rb")
+		except:
+			print "That file doesn't exist"
+			continue
+		
 		
 	print "Good Bye"	
 
