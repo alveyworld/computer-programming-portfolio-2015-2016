@@ -14,6 +14,11 @@ Do you want to encrypt or decrypt?
 (d)ecrypt
 (q)uit
 """
+	option = raw_input("choose: ")
+	while option != 'e' and option != 'd' and option != 'q':
+		option = raw_input("choose: ")
+	
+	return option
 
 def main():
 	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?! \t\n\r"
@@ -21,6 +26,7 @@ def main():
 	
 	while True:
 		choice = StartMenu()
+		print "you chose: ", choice
 		
 
 main()
