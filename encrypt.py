@@ -20,7 +20,7 @@ def main():
 	PrintDescription()
 	
 	while True:
-		StartMenu()
+		choice = StartMenu()
 		
 
 main()
