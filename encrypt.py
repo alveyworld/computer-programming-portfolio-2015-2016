@@ -26,8 +26,10 @@ def main():
 	
 	while True:
 		choice = StartMenu()
-		print "you chose: ", choice
-		
+		if choice == 'q':
+			break
+	
+	print "Good Bye"	
 
 main()
 
