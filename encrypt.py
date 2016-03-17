@@ -89,6 +89,9 @@ def main():
 		else:
 			Substitution(fin, fout, option, alphabet)
 		
+		fin.close()
+		fout.close()
+		
 	
 	print "Good Bye"
 
