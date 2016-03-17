@@ -34,6 +34,32 @@ Which method do you want to use?
 	
 	return choice
 
+def Caesarian(fin, fout, encrypt_or_decrypt_choice, alphabet):
+    # Determine the offset by generating a random number in the correct range.
+    # This will be the same random number, if the password sent to random.seed is the same.
+    offset = random.randrange(1,len(alphabet))
+    if encrypt_or_decrypt_choice=='d':
+        offset = -offset
+    print "Using the secret offset of", offset
+
+    # Read every line of the input file.
+    for line1 in fin:
+        # Alter each character of the line1, putting the result into line2.
+        line2 = ""
+        for c in line1:
+            if c in alphabet:
+                pos1 = alphabet.find(c)
+                pos2 = (pos1+offset)%len(alphabet)
+                line2 += alphabet[pos2]
+        # Write each resulting line2 to the output file.
+        fout.write(line2)
+
+def PseudoRandom(fin, fout, encrypt_or_decrypt_choice, alphabet):
+	pass
+
+def Substitution(fin, fout, encrypt_or_decrypt_choice, alphabet):
+	pass
+
 def main():
 	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?! \t\n\r"
 	PrintDescription()
@@ -56,6 +82,12 @@ def main():
 			continue
 		random.seed(password)
 		
+		if method_option == 'c':
+			Caesarian(fin, fout, option, alphabet)
+		elif method_option == 'p':
+			PseudoRandom(fin, fout, option, alphabet)
+		else:
+			Substitution(fin, fout, option, alphabet)
 		
 	
 	print "Good Bye"
