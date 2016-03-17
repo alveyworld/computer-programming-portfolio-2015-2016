@@ -1,4 +1,5 @@
 # encryption program
+import random
 
 def PrintDescription():
 	print """
@@ -43,8 +44,19 @@ def main():
 		if option == 'q':
 			break
 		method_option = MethodMenu()
-		file_name = raw_input("What file? ")
-			
+		source_file = raw_input("What source file? ")
+		dest_file = raw_input("What destination file? ")
+		password = raw_input("What password? ")
+		
+		try:
+			fin = open(source_file, "rb")
+			fout = open(dest_file, "wb")
+		except:
+			print "Cannot read file"
+			continue
+		random.seed(password)
+		
+		
 	
 	print "Good Bye"
 
