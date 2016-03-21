@@ -55,7 +55,21 @@ def Caesarian(fin, fout, encrypt_or_decrypt_choice, alphabet):
         fout.write(line2)
 
 def PseudoRandom(fin, fout, encrypt_or_decrypt_choice, alphabet):
-	pass
+	# Read every line of the input file.
+    for line1 in fin:
+        # Alter each character of the line1, putting the result into line2.
+        line2 = ""
+        for c in line1:
+            if c in alphabet:
+            	# get a random offset for every character in each line
+            	offset = random.randrange(1,len(alphabet))
+            	if encrypt_or_decrypt_choice=='d':
+        			offset = -offset
+                pos1 = alphabet.find(c)
+                pos2 = (pos1+offset)%len(alphabet)
+                line2 += alphabet[pos2]
+        # Write each resulting line2 to the output file.
+        fout.write(line2)
 
 def Substitution(fin, fout, encrypt_or_decrypt_choice, alphabet):
 	pass
