@@ -1,4 +1,5 @@
 # encryption program
+import random
 
 def PrintDescription():
 	print """
@@ -56,7 +57,7 @@ def main():
 			print "That file doesn't exist"
 			continue
 		fout = open(destination_file, "wb")
-		
+		random.seed(password)
 		
 	print "Good Bye"	
 
