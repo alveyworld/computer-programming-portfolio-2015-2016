@@ -22,10 +22,38 @@ def Caesarian(fin, fout, encrypt_or_decrypt_choice, alphabet):
         fout.write(line2)
 
 def PseudoRandom(fin, fout, encrypt_or_decrypt_choice, alphabet):
-	pass
+    # Read every line of the input file.
+    for line1 in fin:
+        # Alter each character of the line1, putting the result into line2.
+        line2 = ""
+        for c in line1:
+            if c in alphabet:
+                offset = random.randrange(1,len(alphabet))
+                if encrypt_or_decrypt_choice=='d':
+                    offset = -offset
+                pos1 = alphabet.find(c)
+                pos2 = (pos1+offset)%len(alphabet)
+                line2 += alphabet[pos2]
+        # Write each resulting line2 to the output file.
+        fout.write(line2)
 
-def Sustitution(fin, fout, encrypt_or_decrypt_choice, alphabet):
-	pass
+def Substitution(fin, fout, encrypt_or_decrypt_choice, alphabet):
+	alphabetList = []
+	for ch in alphabet:
+		alphabetList.append(ch)
+	random.shuffle(alphabetList)
+	
+	substitutionAlphabet = "".join(alphabetList)
+	
+	for line1 in fin:
+		line2 = ""
+		for c in line1:
+			if c in alphabet:
+				pos = alphabet.find(c)
+				line2 += substitutionAlphabet[pos]
+        
+		fout.write(line2)
+	
 
 def PrintDescription():
 	print """
@@ -61,7 +89,7 @@ Which method do you want to use?
 	return option
 
 def main():
-	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?! \t\n\r"
+	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?! \t\n\r\"-"
 	PrintDescription()
 	
 	while True:
@@ -91,6 +119,10 @@ def main():
 			PseudoRandom(fin, fout, choice, alphabet)
 		else:
 			Substitution(fin, fout, choice, alphabet)
+		
+		fin.close()
+		fout.close()
+		
 		
 		
 	print "Good Bye"	
