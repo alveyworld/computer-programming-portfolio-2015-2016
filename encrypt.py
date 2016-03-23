@@ -1,6 +1,32 @@
 # encryption program
 import random
 
+def Caesarian(fin, fout, encrypt_or_decrypt_choice, alphabet):
+    # Determine the offset by generating a random number in the correct range.
+    # This will be the same random number, if the password sent to random.seed is the same.
+    offset = random.randrange(1,len(alphabet))
+    if encrypt_or_decrypt_choice=='d':
+        offset = -offset
+    print "Using the secret offset of", offset
+
+    # Read every line of the input file.
+    for line1 in fin:
+        # Alter each character of the line1, putting the result into line2.
+        line2 = ""
+        for c in line1:
+            if c in alphabet:
+                pos1 = alphabet.find(c)
+                pos2 = (pos1+offset)%len(alphabet)
+                line2 += alphabet[pos2]
+        # Write each resulting line2 to the output file.
+        fout.write(line2)
+
+def PseudoRandom(fin, fout, encrypt_or_decrypt_choice, alphabet):
+	pass
+
+def Sustitution(fin, fout, encrypt_or_decrypt_choice, alphabet):
+	pass
+
 def PrintDescription():
 	print """
 This program encrypts and decrypts messages, using multiple encryption methods.
@@ -59,7 +85,16 @@ def main():
 		fout = open(destination_file, "wb")
 		random.seed(password)
 		
+		if method_choice == "c":
+			Caesarian(fin, fout, choice, alphabet)
+		elif method_choice == "p":
+			PseudoRandom(fin, fout, choice, alphabet)
+		else:
+			Substitution(fin, fout, choice, alphabet)
+		
+		
 	print "Good Bye"	
+		
 
 main()
 
