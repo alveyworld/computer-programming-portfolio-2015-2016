@@ -72,7 +72,22 @@ def PseudoRandom(fin, fout, encrypt_or_decrypt_choice, alphabet):
         fout.write(line2)
 
 def Substitution(fin, fout, encrypt_or_decrypt_choice, alphabet):
-	pass
+	alphabetList = []
+	for ch in alphabet:
+		alphabetList.append(ch)
+	random.shuffle(alphabetList)
+	
+	substitutionAlphabet = "".join(alphabetList)
+	
+	for line1 in fin:
+		line2 = ""
+		for c in line1:
+			if c in alphabet:
+				pos = alphabet.find(c)
+				line2 += substitutionAlphabet[pos]
+		fout.write(line2)
+	
+	
 
 def main():
 	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?! \t\n\r"
