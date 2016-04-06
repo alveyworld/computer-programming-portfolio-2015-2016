@@ -20,22 +20,7 @@ direction = 'right'
 while True: # the main game loop
 	DISPLAYSURF.fill(WHITE)
 	
-	if direction ==  'right':
-		catx += 5
-		if catx == 450:
-			direction = 'down'
-	elif direction == 'down':
-		caty += 5
-		if caty == 225:
-			direction = 'left'
-	elif direction == 'left':
-		catx -= 5
-		if catx == 10:
-			direction = 'up'
-	elif direction == 'up':
-		caty -= 5
-		if caty == 10:
-			direction = 'right'
+	
 	
 	DISPLAYSURF.blit(catImg, (catx, caty))
 	
@@ -43,6 +28,17 @@ while True: # the main game loop
 		if event.type == QUIT:
 			pygame.quit()
 			sys.exit()
+    
+	keys=pygame.key.get_pressed()
+	if keys[K_RIGHT]: 
+		catx += 5
+	if keys[K_LEFT]: 
+		catx -= 5
+	if keys[K_DOWN]: 
+		caty += 5
+	if keys[K_UP]: 
+		caty -= 5    	
+		
 	pygame.display.update()
 	fpsClock.tick(FPS)
 
