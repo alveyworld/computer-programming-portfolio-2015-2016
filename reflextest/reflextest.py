@@ -27,23 +27,7 @@ class GameBoard(game_mouse.Game):
         return
         
     def game_logic(self, keys, newkeys, buttons, newbuttons, mouse_position):
-        x = mouse_position[0]
-        y = mouse_position[1]
-        
-        self.timeclock += 1
-        self.timer += 1
-        if self.bug and self.timeclock%50 == 0:
-        	self.bug = False
-        elif self.timeclock%self.random_wait == 0:
-        	self.bug = True
-        	self.timer = 0
-        	self.bugpos = random.randrange(9)
-        	self.random_wait = random.randint(50, 150)
-        
-        if 1 in newbuttons:
-        	self.spot = processClick(self.board, x, y, self.bug, self.bugpos,
-        	                         self.width, self.height, self.timer)
-        return
+        pass
     
     def paint(self, surface):
         drawWindow(surface, self.width, self.height, self.board)
