@@ -40,7 +40,10 @@ class GameBoard(game_mouse.Game):
         	self.bugpos = random.randrange(9)
         	self.random_wait = random.randint(50, 150)
         
-        
+        if 1 in newbuttons:
+        	self.spot = processClick(self.board, x, y, self.bug, self.bugpos,
+        	                         self.width, self.height, self.timer)
+        return
     
     def paint(self, surface):
         drawWindow(surface, self.width, self.height, self.board)
