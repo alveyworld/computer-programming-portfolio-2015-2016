@@ -47,8 +47,14 @@ def drawTest(surface, spot):
 def drawWindow(surface, width, height, board):
     clearBackground(surface, width, height)
     
-    
-
+    for x in range(3):
+    	for y in range(3):
+    		outline = pygame.Rect(x*(width/3), y*(height/3), (width/3), (height/3))
+			pygame.draw.rect(surface, BUTTON_FILL_COLOR, outline, 0)
+			pygame.draw.rect(surface, BUTTON_OUTLINE_COLOR, outline, 1)
+	return
+	
+	
 def clearBackground(surface, width, height):
     rect = pygame.Rect(0, 0, width, height)
     surface.fill(BACKGROUND_COLOR, rect)
