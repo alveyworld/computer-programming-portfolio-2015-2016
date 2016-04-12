@@ -21,13 +21,26 @@ class GameBoard(game_mouse.Game):
         self.timeclock = 0
         self.timer = 0
         self.random_wait = random.randint(20,50)
-        self.bug = True
+        self.bug = False
         self.bugpos = random.randrange(9)
         self.spot = pygame.Rect(10,10,0,0)
         return
         
     def game_logic(self, keys, newkeys, buttons, newbuttons, mouse_position):
-        pass
+        x = mouse_position[0]
+        y = mouse_position[1]
+        
+        self.timeclock += 1
+        self.timer += 1
+        if self.bug and self.timeclock%50 == 0:
+        	self.bug = False
+        elif self.timeclock%self.random_wait == 0:
+        	self.bug = True
+        	self.timer = 0
+        	self.bugpos = random.randrange(9)
+        	self.random_wait = random.randint(50, 150)
+        
+        
     
     def paint(self, surface):
         drawWindow(surface, self.width, self.height, self.board)
