@@ -47,9 +47,12 @@ def drawTest(surface, spot):
 def drawWindow(surface, width, height, board):
     clearBackground(surface, width, height)
     
+    
 
 def clearBackground(surface, width, height):
-    pass
+    rect = pygame.Rect(0, 0, width, height)
+    surface.fill(BACKGROUND_COLOR, rect)
+    return
 
 def main():
     game = GameBoard(600, 600)
