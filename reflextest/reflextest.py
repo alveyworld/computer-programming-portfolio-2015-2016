@@ -21,7 +21,7 @@ class GameBoard(game_mouse.Game):
         self.timeclock = 0
         self.timer = 0
         self.random_wait = random.randint(20,50)
-        self.bug = False
+        self.bug = True
         self.bugpos = random.randrange(9)
         self.spot = pygame.Rect(10,10,0,0)
         return
@@ -39,7 +39,10 @@ def processClick(board, click_x, click_y, bug, bugpos, width, height,timer):
     pass
 
 def drawBug(surface, width, height, square, board):
-	pass
+	pygame.draw.circle(surface, BUG_COLOR, [(square%3)*(width/3)+(width/6),
+	                                        (square/3)*(height/3)+(height/6)],
+	                                        20,0)
+	return
 	
 def drawTest(surface, spot):
 	pass
