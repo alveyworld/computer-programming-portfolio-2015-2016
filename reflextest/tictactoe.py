@@ -74,16 +74,6 @@ class GameBoard(game_mouse.Game):
         return
 
 def game_end(board):
-	b = board
-	win_checks = [b[:3],b[3:6],b[6:],b[::3],b[1::3],b[2::3],b[::4],b[2:8:2]]
-	print "win_checks", win_checks
-	if ['x','x','x'] in win_checks:
-		return True, "X wins!!"
-	if ['o','o','o'] in win_checks:
-		return True, "O wins!!"
-	if not 0 in board:
-		return True, "Draw!!"
-	
 	return False, "Not over yet"
       
 def processClick(board, click_x, click_y, turn, width, height):
