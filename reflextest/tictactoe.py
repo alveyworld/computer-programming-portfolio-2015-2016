@@ -74,6 +74,49 @@ class GameBoard(game_mouse.Game):
         return
 
 def game_end(board):
+	# ['x','x','x','o','o', 0,  0,  0,  0]
+	# [ 0,  0,  0, 'x','x','x',  0,  0,  0]
+	#   0   1   2   3   4   5   6   7   8
+	 
+	if board[0] == 'x' and board[1] == 'x' and board[2] == 'x':
+		return True, "X wins!!"
+	if board[3] == 'x' and board[4] == 'x' and board[5] == 'x':
+		return True, "X wins!!"
+	if board[6] == 'x' and board[7] == 'x' and board[8] == 'x':
+		return True, "X wins!!"
+	if board[0] == 'x' and board[3] == 'x' and board[6] == 'x':
+		return True, "X wins!!"
+	if board[1] == 'x' and board[4] == 'x' and board[7] == 'x':
+		return True, "X wins!!"
+	if board[2] == 'x' and board[5] == 'x' and board[8] == 'x':
+		return True, "X wins!!"
+	if board[0] == 'x' and board[4] == 'x' and board[8] == 'x':
+		return True, "X wins!!"
+	if board[2] == 'x' and board[4] == 'x' and board[6] == 'x':
+		return True, "X wins!!"
+		
+	if board[0] == 'o' and board[1] == 'o' and board[2] == 'o':
+		return True, "O wins!!"
+	if board[3] == 'o' and board[4] == 'o' and board[5] == 'o':
+		return True, "O wins!!"
+	if board[6] == 'o' and board[7] == 'o' and board[8] == 'o':
+		return True, "O wins!!"
+	if board[0] == 'o' and board[3] == 'o' and board[6] == 'o':
+		return True, "O wins!!"
+	if board[1] == 'o' and board[4] == 'o' and board[7] == 'o':
+		return True, "O wins!!"
+	if board[2] == 'o' and board[5] == 'o' and board[8] == 'o':
+		return True, "O wins!!"
+	if board[0] == 'o' and board[4] == 'o' and board[8] == 'o':
+		return True, "O wins!!"
+	if board[2] == 'o' and board[4] == 'o' and board[6] == 'o':
+		return True, "O wins!!"
+	
+	
+	if not 0 in board:
+		return True, "Draw!!"
+	
+	
 	return False, "Not over yet"
       
 def processClick(board, click_x, click_y, turn, width, height):
